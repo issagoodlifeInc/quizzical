@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Body BG, btn text */
+  --bgBody: #f5f7fb;
+  --blobYellow: #fffad1;
+  --blobBlue: #deebf8;
+  /* h1 heading, paragraphs */
+  --purple: #293264;
+  /* btn-bg */
+  --lightPurple: #4d5b9e;
+
+  /* Won or lost btn-bgs */
+  --red: #f8bcbc;
+  --green: #94d7a2;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
