@@ -117,10 +117,12 @@ h3 {
   color: var(--purple);
   background-color: var(--bgBody);
   border: 1px solid var(--purple);
+  /* margin-block-start: 0.3rem; */
+  margin-block-end: 1rem;
 }
 
 .question {
-  padding-block-end: 1rem;
+  padding-block-end: 0.3rem;
   border-bottom: 0.794239px solid #dbdef0;
 }
 
