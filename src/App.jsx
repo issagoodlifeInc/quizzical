@@ -46,7 +46,6 @@ function App() {
     }
 
     getData();
-    // console.log(getData());
   }, [playAgain]);
 
   function decodeHtml(html) {
@@ -95,10 +94,8 @@ function App() {
         }
       });
     });
-    setScore(scoreCount);
+    setScore((prevScore) => scoreCount);
   }
-
-  console.log(score);
 
   function letsPlayAgain() {
     setPlayAgain((prevPlay) => !prevPlay);
@@ -111,6 +108,7 @@ function App() {
         key={quiz.id}
         question={quiz.question}
         answers={quiz.answers}
+        score={score}
         selectAnswer={() => selectChoice(event, quiz.id)}
       />
     );

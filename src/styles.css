@@ -131,3 +131,15 @@ h3 {
   margin-block-start: 1rem;
   text-align: center;
 }
+
+.play__text {
+  font-weight: 700;
+  color: var(--purple);
+  display: inline-block;
+  margin-inline-end: 1rem;
+}
+
+.btn_play {
+  font-size: 0.7rem;
+  margin-block-start: 1rem;
+}

@@ -8,7 +8,7 @@ export default function Check({ score, handleScoreClick, playAgainClick }) {
   } else {
     return (
       <>
-        <p>You scored {score}/5 correct answers </p>
+        <p className="play__text">You scored {score}/5 correct answers </p>
         <button onClick={playAgainClick} className="btn_play">
           Play Again
         </button>
