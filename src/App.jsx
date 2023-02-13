@@ -11,11 +11,13 @@ function App() {
   const [score, setScore] = useState(null);
   const [playAgain, setPlayAgain] = useState(false);
 
+  // Category change
+  const [category, setCategory] = useState("");
+
   React.useEffect(() => {
+    let url = `https://opentdb.com/api.php?amount=5&type=multiple${category}`;
     async function getData() {
-      const res = await fetch(
-        "https://opentdb.com/api.php?amount=5&type=multiple"
-      );
+      const res = await fetch(url);
       const data = await res.json();
 
       const newData = data.results.map((quiz) => {
@@ -44,9 +46,10 @@ function App() {
       });
       setQuestions(newData);
     }
+    console.log(url);
 
     getData();
-  }, [playAgain]);
+  }, [playAgain, category]);
 
   function decodeHtml(html) {
     var txt = document.createElement("textarea");
@@ -116,7 +119,11 @@ function App() {
 
   return (
     <main className="App">
-      <Start start={startGame} handleStart={() => setStartGame(!startGame)} />
+      <Start
+        start={startGame}
+        handleStart={() => setStartGame(!startGame)}
+        category={() => setCategory("&category=21")}
+      />
       {!startGame && (
         <section className="container ">
           {quizElements}

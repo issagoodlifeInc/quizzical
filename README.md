@@ -39,12 +39,12 @@ Screenshot of the Quizzical App mock up
 
 ### Links
 
-- Solution URL: [GitHub Link]()
-- Live Site URL: [Netlify Deploy]()
+- Solution URL: [GitHub Link](https://github.com/issagoodlifeInc/quizzical.git)
+- Live Site URL: [Netlify Deploy](https://lesquiz.netlify.app/)
 
 ## My process
 
-1. Recreated the design as per [Figma]()
+1. Recreated the design as per [Figma](https://www.figma.com/file/E9S5iPcm10f0RIHK8mCqKL/Quizzical-App?node-id=0%3A1&t=auIHPhVjWmCbWZRz-0)
 
 2. Started with the mockup -- deleteting unrequired files and adding the `component` and `images` files to the structure after `npm create vite@latest Quizzical -- --template react`
 
