@@ -4,6 +4,10 @@ import Quiz from "./components/Quiz";
 import Check from "./components/Check";
 import { nanoid } from "nanoid";
 
+// Pictures
+import blobBlue from "./assets/images/blob-blue.png";
+import blobYellow from "./assets/images/blob-yellow.png";
+
 function App() {
   // State to handle the quiz
   const [startGame, setStartGame] = useState(true);
@@ -105,6 +109,12 @@ function App() {
     setScore(null);
   }
 
+  // function changeCategory(event) {
+  //   let cat = event.target.value;
+  //   setCategory(cat);
+  //   console.log(cat);
+  // }
+
   const quizElements = questions.map((quiz) => {
     return (
       <Quiz
@@ -118,23 +128,27 @@ function App() {
   });
 
   return (
-    <main className="App">
-      <Start
-        start={startGame}
-        handleStart={() => setStartGame(!startGame)}
-        category={() => setCategory("&category=21")}
-      />
-      {!startGame && (
-        <section className="container ">
-          {quizElements}
-          <Check
-            score={score}
-            handleScoreClick={checkScore}
-            playAgainClick={letsPlayAgain}
-          />
-        </section>
-      )}
-    </main>
+    <>
+      <img src={blobYellow} alt="" className="yellow-blob" />
+      <main className="App">
+        <Start
+          start={startGame}
+          handleStart={() => setStartGame(!startGame)}
+          // category={() => changeCategory(event)}
+        />
+        {!startGame && (
+          <section className="container ">
+            {quizElements}
+            <Check
+              score={score}
+              handleScoreClick={checkScore}
+              playAgainClick={letsPlayAgain}
+            />
+          </section>
+        )}
+      </main>
+      <img src={blobBlue} alt="" className="blue-blob" />
+    </>
   );
 }
 

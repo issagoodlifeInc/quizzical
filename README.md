@@ -62,17 +62,74 @@ Screenshot of the Quizzical App mock up
 
 - Using Figma files to code
 
-- js  React := 
-- ##### ES6 Function call VS Normal fxn call
-
+- ##### Handling async fetch and manipulating the data for use
+  
 ```JSX
+ React.useEffect(() => {
+    let url = `https://opentdb.com/api.php?amount=5&type=multiple${category}`;
+    async function getData() {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      // created newdata from the data returned and manipulated it to have an answers array with the correct and incorrect answers + keeping isCorrect true if the answer is thew same as the correct one given
+      
+      // Then pushed the newData to the setQuestionsd state
+      const newData = data.results.map((quiz) => {
+
+        let answersArray = [];
+        answersArray.push(quiz.correct_answer);
+        answersArray.push(...quiz.incorrect_answers);
+        answersArray = answersArray.sort(() => Math.random() - 0.5);
+        answersArray = answersArray.map((ans) => {
+          return {
+            id: nanoid(),
+            choice: decodeHtml(ans),
+            isCorrect: ans === quiz.correct_answer ? true : false,
+            isSelected: false,
+          };
+        });
+        return {
+          id: nanoid(),
+          question: decodeHtml(quiz.question),
+          answers: answersArray,
+        };
+      });
+      setQuestions(newData);
+    }
+    console.log(url);
+
+    getData();
+    // this will run on first load and only if playAgain or category changes
+  }, [playAgain, category]);
 
 ```
--css/ HTML :=
-- ##### Styling an element conditionally
+- ##### Updating the setQuestion state when on selected an answer
 
-```css
-
+```jsx
+const updatedQuestions = questions.map((quiz) => {
+      if (quiz.id === questionId) {
+        const updatedAnswers = quiz.answers.map((ans) => {
+          if (ans.choice === selectedAnswer) {
+            return {
+              ...ans,
+              isSelected: true,
+            };
+          } else {
+            return {
+              ...ans,
+              isSelected: false,
+            };
+          }
+        });
+        return {
+          ...quiz,
+          answers: updatedAnswers,
+        };
+      } else {
+        return { ...quiz };
+      }
+    });
+    setQuestions(updatedQuestions);
 ```
 
 - ##### React! React! React!
